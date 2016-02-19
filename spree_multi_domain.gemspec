@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.version     = '3.0.0'
   s.summary     = 'Adds multiple site support to Spree'
   s.description = 'Multiple Spree stores on different domains - single unified backed for processing orders.'
-  s.required_ruby_version = '>= 1.9.2'
+  s.required_ruby_version = '>= 2.1.0'
 
   s.authors           = ['Brian Quinn', 'Roman Smirnov', 'David North']
   s.email             = 'brian@railsdog.com'
@@ -30,7 +30,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'mysql2'
   s.add_development_dependency 'pg'
   s.add_development_dependency 'rspec-rails',  '~> 2.7'
-  s.add_development_dependency 'sass-rails', '~> 4.0.2'
-  s.add_development_dependency 'spree_multi_currency'
+  s.add_development_dependency 'sass-rails', '~> 5.0.0'
   s.add_development_dependency 'sqlite3'
 end
