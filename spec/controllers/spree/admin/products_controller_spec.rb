@@ -20,8 +20,8 @@ describe Spree::Admin::ProductsController do
       it "clears stores if they previously existed" do
         @product.stores << @store
 
-        spree_put :update, :id => @product.to_param,
-                      :product => {:name => @product.name}
+        spree_put :update, id: @product.to_param,
+                      product: {name: @product.name}
 
         @product.reload.store_ids.should be_empty
       end
@@ -29,8 +29,8 @@ describe Spree::Admin::ProductsController do
 
     describe "when a store is selected" do
       it "clears stores" do
-        spree_put :update, :id => @product.to_param,
-                      :product => {:name => @product.name, :store_ids => [@store.id]}
+        spree_put :update, id: @product.to_param,
+                      product: {name: @product.name, store_ids: [@store.id]}
 
         @product.reload.store_ids.should == [@store.id]
       end
