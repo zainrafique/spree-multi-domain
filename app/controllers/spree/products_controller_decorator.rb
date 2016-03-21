@@ -10,5 +10,4 @@ Spree::ProductsController.class_eval do
       raise ActiveRecord::RecordNotFound
     end
   end
-
 end
