@@ -30,6 +30,15 @@ a code of "alpha" you should store its default layout in app/views/spree/layouts
 ## Installation
 
 1. Add this extension to your Gemfile with this line:
+
+  #### Spree >= 3.1
+
+  ```ruby
+  gem 'spree_multi_domain', github: 'spree-contrib/spree-multi-domain'
+  ```
+
+  #### Spree 3.0 and Spree 2.x
+
   ```ruby
   gem 'spree_multi_domain', github: 'spree-contrib/spree-multi-domain', branch: 'X-X-stable'
   ```
