@@ -4,7 +4,7 @@ appraise 'spree-3-1' do
 end
 
 appraise 'spree-3-2' do
-  gem 'spree', '~> 3.2.0.rc3'
+  gem 'spree', '~> 3.2.0'
   gem 'spree_multi_currency', '~> 3.2.0.beta'
   gem 'rails-controller-testing'
 end
