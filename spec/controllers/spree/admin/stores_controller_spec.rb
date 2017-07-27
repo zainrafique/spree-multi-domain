@@ -5,7 +5,7 @@ describe Spree::Admin::StoresController do
 
   describe "on :index" do
     it "renders index" do
-      spree_get :index
+      get :index
       response.should be_success
     end
   end
