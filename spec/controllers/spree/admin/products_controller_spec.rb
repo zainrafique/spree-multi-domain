@@ -5,7 +5,7 @@ describe Spree::Admin::ProductsController do
 
   describe "on :index" do
     it "renders index" do
-      get :index
+      spree_get :index
       response.should be_success
     end
   end
@@ -19,12 +19,11 @@ describe Spree::Admin::ProductsController do
     describe "when no stores are selected" do
       it "clears stores if they previously existed" do
         @product.stores << @store
-        put :update, params: {
+        spree_put :update,
           id: @product.to_param,
           product: {
             name: @product.name
           }
-        }
 
         expect(@product.reload.store_ids).to be_empty
       end
@@ -32,13 +31,12 @@ describe Spree::Admin::ProductsController do
 
     describe "when a store is selected" do
       it "clears stores" do
-        put :update, params: {
+        spree_put :update,
           id: @product.to_param,
           product: {
             name: @product.name,
             store_ids: @store.id
           }
-        }
 
         expect(@product.reload.store_ids).to include(@store.id)
       end
@@ -48,13 +46,12 @@ describe Spree::Admin::ProductsController do
       it "clears stores" do
         stores = FactoryGirl.create_list(:store, 3)
         store_ids = stores.map(&:id)
-        put :update, params: {
+        spree_put :update,
           id: @product.to_param,
           product: {
             name: @product.name,
             store_ids: store_ids.join(",")
           }
-        }
 
         expect(@product.reload.store_ids).to eq(store_ids)
       end
