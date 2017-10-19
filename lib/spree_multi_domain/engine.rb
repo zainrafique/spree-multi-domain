@@ -20,7 +20,7 @@ module SpreeMultiDomain
     initializer "templates with dynamic layouts" do |app|
       ActionView::TemplateRenderer.prepend(
         Module.new do
-          def find_layout(layout, locals, *formats)
+          def find_layout(layout, locals, formats=[])
             store_layout = layout
             if @view.respond_to?(:current_store) && @view.current_store && !@view.controller.is_a?(Spree::Admin::BaseController) && !@view.controller.is_a?(Spree::Api::BaseController)
               store_layout = if layout.is_a?(String)
@@ -31,9 +31,19 @@ module SpreeMultiDomain
             end
 
             begin
-              super(store_layout, locals, *formats)
+
+              if Rails.gem_version >= Gem::Version.new('5.x') # hack to make it work with rails 4.x and 5.x
+                super(store_layout, locals, formats)
+              else
+                super(store_layout, locals, *formats)
+              end
+
             rescue ::ActionView::MissingTemplate
-              super(layout, locals, *formats)
+              if Rails.gem_version >= Gem::Version.new('5.x') # hack to make it work with rails 4.x and 5.x
+                super(layout, locals, formats)
+              else
+                super(layout, locals, *formats)
+              end
             end
           end
         end
